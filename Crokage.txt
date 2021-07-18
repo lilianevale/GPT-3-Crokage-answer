@@ -1,0 +1,194 @@
+id1-Insert images in mongoDB in language Java
+package mongodb.testing.java;
+import com.mongodb.*;
+import com.mongodb.gridfs.*;
+import java.io.*;
+
+public class Main {
+
+    public static byte[] LoadImage(String filePath) throws Exception {
+        File file = new File(filePath);
+        int size = (int)file.length();
+        byte[] buffer = new byte[size];
+        FileInputStream in = new FileInputStream(file);
+        in.read(buffer);
+        in.close();
+        return buffer;
+    }
+
+    public static void main(String[] args) throws Exception {
+        //Load our image
+        byte[] imageBytes = LoadImage("C:/Temp/bear.bmp");
+        //Connect to database
+        Mongo mongo = new Mongo( "127.0.0.1" );
+        String dbName = "GridFSTestJava";
+        DB db = mongo.getDB( dbName );
+        //Create GridFS object
+        GridFS fs = new GridFS( db );
+        //Save image into database
+        GridFSInputFile in = fs.createFile( imageBytes );
+        in.save();
+
+        //Find saved image
+        GridFSDBFile out = fs.findOne( new BasicDBObject( "_id" , in.getId() ) );
+
+        //Save loaded image from database into new image file
+        FileOutputStream outputImage = new FileOutputStream("C:/Temp/bearCopy.bmp");
+        out.writeTo( outputImage );
+        outputImage.close();
+    }
+}
+**************************************
+id2-How to Get Number Of Entries In Zip File in language Java?
+
+That is the issue. size() returns the number of all entries in the zip file. To count the number of entries without directories, you need to iterate the entries and check whether its a directory or not:
+
+...
+int count = 0;
+Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
+while (zipEntries.hasMoreElements()) {
+    ZipEntry entry = zipEntries.nextElement();
+    if (!entry.isDirectory()) {
+       count++;
+    }
+}
+...
+
+See also
+
+    https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipFile.html#entries
+    https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipEntry.html#isDirectory
+*********************************************
+id3-How to returns the root cause of the specified exception using Java language?
+
+ normally use the implementation below instead of Apache's one.
+
+Besides it complexity Apache's implementation returns null when no cause is found, which force me to perform an additional check for null.
+
+Normally when looking for an exception's root/cause I already have a non-null exception to start with, which is for all intended proposes is the cause of the failure at hand, if a deeper cause can't be found.
+
+Throwable getCause(Throwable e) {
+    Throwable cause = null; 
+    Throwable result = e;
+
+    while(null != (cause = result.getCause())  && (result != cause) ) {
+        result = cause;
+    }
+    return result;
+}
+*********************************************
+id4-How to import Csv from file?
+
+Reader in = new FileReader("path/to/file.csv");
+Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+for (CSVRecord record : records) {
+    String lastName = record.get("Last Name");
+    String firstName = record.get("First Name");
+}
+
+*********************************************
+id5-how to get Last Inserted ID from mysql in language Java?
+
+PreparedStatement pstmt = conn.prepareStatement(Query, Statement.RETURN_GENERATED_KEYS);  
+pstmt.executeUpdate();  
+ResultSet keys = pstmt.getGeneratedKeys();    
+keys.next();  
+key = keys.getInt(1);
+
+*******************************************************
+id6-How do I convert angle from radians to degrees in language Java?
+
+public class examples
+{
+    public static void main(String[] args)
+    {
+         System.out.println( Math.toRadians( 180 ) ) ;
+         System.out.println( Math.toDegrees( Math.PI ) ) ;
+    }
+}
+
+If your input is in degrees, you need to convert the number going in to sin to radians:
+
+double angle = 90 ;
+double result  = Math.sin( Math.toRadians( angle ) ) ;
+System.out.println( result ) ;
+********************************************************
+id8-How to read a text file and displays it line by line using Java?
+
+//Find the view by its id
+    TextView tv = (TextView)findViewById(R.id.fileContent);
+
+public void onClick(View v) 
+        {
+
+            File file = new File("/sdcard/ReportData.txt");
+            StringBuffer contents = new StringBuffer();
+            BufferedReader reader = null;
+
+            try {
+                reader = new BufferedReader(new FileReader(file));
+                String text = null;
+
+                // repeat until all lines is read
+                while ((text = reader.readLine()) != null) {
+                    contents.append(text)
+                        .append(System.getProperty(
+                            "line.separator"));
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }           
+
+            Log.e("TEXT", contents.toString());
+             String text = contents.toString();
+
+  //Set the text
+        tv.setText(text);
+        }
+***************************************
+id7- How to resize images in Java language? 
+
+// create command
+ConvertCmd cmd = new ConvertCmd();
+
+// create the operation, add images and operators/options
+IMOperation op = new IMOperation();
+op.addImage("source_picture.jpg"); // source file
+op.resize(800,600);
+// of op.resize(800); // and height calculate automatically
+op.addImage("resized_picture.jpg"); // destination file file
+
+// execute the operation
+cmd.run(op);
+**************************************
+id9-How to a Java Program to calculate average of numbers using Array on Java language?
+
+OptionalDouble average = marks
+            .stream()
+            .mapToDouble(a -> a)
+            .average();
+
+Thus your average value is average.getAsDouble()
+
+return average.isPresent() ? average.getAsDouble() : 0; 
+***************************************
+id10-How do I extend classes in Java?
+
+Object is an exception to the first rule, and has no superclass. From JLS3 8.1.4:
+
+    The extends clause must not appear in the definition of the class Object, because it is the primordial class and has no direct superclass.
+
+You can also try it out with reflection:
+
+Object.class.getSuperclass(); // returns null
+
