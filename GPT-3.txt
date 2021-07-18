@@ -1,0 +1,247 @@
+id1-Insert images in mongoDB in language Java
+import java.util.ArrayList;
+import java.util.List;
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import com.mongodb.ServerAddress;
+import com.mongodb.ServerStatus;
+import com.mongodb.client.MongoClientOptions;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+public class InsertImages {
+public static void main(String[] args) {
+try {
+MongoClientOptions opt = new MongoClientOptions();
+Mongo m = new MongoClient(new ServerAddress(""localhost"", 27017), opt);
+System.out.println(""connecting to server"");
+System.out.println(""inserting images"");
+List<Image> images = new ArrayList<Image>();
+images.add(new Image(""http://www.example.com/image1.jpg""));
+images.add(new Image(""http://www.example.com/image2.jpg""));
+images.add(new Image(""http://www.example.com/image3.jpg""));
+mongoDB.insertMany(Images.className(), images, ""images"");
+System.out.println(""inserted"");
+System.out.println(""closing connection"");
+m.close();
+} catch (Exception e) {
+e.printStackTrace();
+}
+}
+
+}
+************************************************
+id2-How to Get Number Of Entries In Zip File in language Java?
+
+Example:
+
+import java.util.zip.*; public class ZipFileNumberOfEntries { public static void main(String[] args) { try { ZipFile zipFile = new ZipFile(new File(""C:\\test.zip"")); System.out.println(""The number of entries in the zip file is : "" + zipFile.getEntryCount()); } catch (IOException e) { System.err.println(""Error opening file""); } } }
+
+Output:
+
+The number of entries in the zip file is : 4
+
+References:
+
+https://docs.oracle.com/javase/tutorial/i18n/numberformat.html
+
+Please write comments if you find anything incorrect, or you want to share more information about the topic discussed above."
+*************************************************
+id3-How to returns the root cause of the specified exception using Java language?
+class Test1 {
+}
+class Test2 {
+}
+class Test3 {
+}
+class Test4 {
+}
+public class HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage {
+public static void main(String[] args) {
+try {
+HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test1 obj1 = new HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test1();
+HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test2 obj2 = new HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test2();
+HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test3 obj3 = new HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test3();
+HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test4 obj4 = new HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test4();
+obj1.method1();
+obj2.method2();
+obj3.method3();
+obj4.method4();
+}
+catch (Exception e) {
+}
+}
+
+class Test1 {
+}
+class Test2 {
+}
+class Test3 {
+}
+class Test4 {
+}
+public class HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage {
+public static void main(String[] args) throws Exception {
+try {
+HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test1 obj1 = new HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test1();
+HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test2 obj2 = new HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test2();
+HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test3 obj3 = new HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test3();
+HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test4 obj4 = new HowToReturnsTheRootCauseOfTheSpecifiedExceptionUsingJavaLanguage.Test4();
+obj1.method1"
+****************************************
+id4-How to import Csv from file?
+
+import java.io.File; import java.io.FileNotFoundException; import java.io.FileReader; import java.io.IOException; import java.io.InputStreamReader; import java.util.Iterator; import org.apache.log4j.Logger; import org.apache.log4j.spi.LoggingEvent; public class ReadCSV { public static void main(String[] args) { try { File file = new File(""/Users/user/Desktop/csv/file.csv""); FileReader reader = new FileReader(file); //Read CSV file string line = null; while ((line = reader.readLine()) != null) { System.out.println(line); } reader.close(); } catch (Exception e) { Logger.getLogger(ReadCSV.class.getName()).log(Level.SEVERE, null, e); } } }
+
+Output:
+
+1,2,3,4,5,6,7,8,9
+****************************************
+id5-how to get Last Inserted ID from mysql in language Java?
+
+
+
+
+
+I'm trying to get the last inserted ID from MySQL database.
+
+
+
+I tried to use the following code:
+
+
+
+
+
+Connection con = null;
+
+Statement st = null;
+
+ResultSet rs = null;
+
+
+
+try {
+
+con = DriverManager.getConnection(""jdbc:mysql://localhost:3306/test"", ""root"","""");
+
+
+
+st = con.createStatement();
+
+
+
+rs = st.executeQuery(""SELECT ID FROM TEST"");
+
+
+
+while (rs.next()) {
+
+id = rs.getInt(""ID"");
+
+}
+
+
+
+System.out.println(id);
+
+
+
+} catch (SQLException e) {
+
+
+
+} finally {
+
+
+
+try {
+
+
+
+rs.close();
+
+st.close();
+
+
+
+con.close();
+
+
+
+} catch (SQLException e)
+****************************************
+id6-How do I convert angle from radians to degrees in language Java?
+
+This is an example program that converts angle from radians to degrees in language Java.
+
+/* * This program converts angle from radians to degrees in language Java. * @author www.javacodegeeks.com * @version 1.0 * @see java.lang.Math#toRadians(double) */ public class RadiansToDegrees { public static void main(String[] args) { // input angle in radians double angle = 0.0; // output angle in degrees double radiansToDegrees = 0.0; // convert from radians to degrees angle = Math.toRadians(angle); // convert from degrees to radians radiansToDegrees = angle * 180 / Math.PI; System.out.println(""Radians: "" + angle); System.out.println("Degrees: " + radiansToDegrees); } }
+
+The code above generates the following result.
+
+Radians: 0.00 Degrees: 0.00
+
+java_convert_angle_radians_degrees.htm
+**************************************
+id7- How to resize images in Java language? 
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+public class ImageResize {
+public static void main(String[] args) {
+try {
+File file = new File(""inputImage.jpg""); 
+BufferedImage bufferedImage = ImageIO.read(file); 
+BufferedImage image = new BufferedImage(bufferedImage.getWidth(null), bufferedImage.getHeight(null), bufferedImage.getType()); 
+BufferedImage outputImage = new BufferedImage(image.getWidth(null), image.getHeight(null), image.getType()); 
+int width = 0; 
+int height = 0; 
+List<Integer> list = new ArrayList<Integer>();
+//list of widths 
+list.add(10); 
+list.add(20); 
+list.add(30); 
+list.add(40); 
+list.add(50); 
+list.add(60); 
+list.add(70); 
+list.add(80); 
+list.add(90); 
+//list of heights 
+list.add(10); 
+list.add(20); 
+list.add
+****************************************]
+id8-How to read a text file and displays it line by line using Java?
+
+How to read a text file and displays it line by line using Java?  Well, it's very simple.  First, create a new class and name it TextReader.  Then, create a method called readLine() that contains the code to read and display the line.  Here's the code: public class TextReader { public static void main(String[] args) { try (Scanner sc = new Scanner(new File(""C:\\Users\\user\\Desktop\\text.txt""))) { while (sc.hasNext()) { System.out.println(sc.next()); } } catch (IOException e) { e.printStackTrace(); } } public static void readLine() { try (Scanner sc = new Scanner(new File(""C:\\Users\\user\\Desktop\\text.txt""))) { String line = sc.nextLine(); while (line != null) { System.out.println(line); line = sc.nextLine(); } } catch (IOException e) { e.printStackTrace(); } } }
+****************************************
+id9-How to a Java Program to calculate average of numbers using Array on Java language?
+
+public class Average { public static void main(String[] args) { int[] numbers = new int[10]; for (int i = 0; i < numbers.length; i++) { numbers[i] = (int) (Math.random() * 10); } int sum = 0; for (int i = 0; i < numbers.length; i++) { sum += numbers[i]; } int average = sum / numbers.length; System.out.println(""Average is: "" + average); } }
+
+How to a Java Program to calculate average of numbers using Array on Java language?
+
+public class Average { public static void main(String[] args) { int[] numbers = new int[10]; for (int i = 0; i < numbers.length; i++) { numbers[i] = (int) (Math.random() * 10); } int sum = 0; for (int i = 0; i < numbers.length; i++) { sum += numbers[i]; } int average = sum / numbers.length; System.out.println(""Average is: "" + average); } }
+
+How to a Java Program to calculate average of numbers using Array on Java language?
+
+public class Average { public static void main(String[] args) { int[] numbers = new int[10]; for (int i = 0; i < numbers.length; i++) { numbers[i]
+
+****************************************
+id10-How do I extend classes in Java?
+
+There are several ways to extend classes in Java. You can add fields and methods to existing classes, you can create your own class that inherits from an existing class, or you can create your own class that implements interfaces.
+
+The most common way to extend a class in Java is by adding fields and methods to an existing class. This is done by using the keyword "extends" followed by the name of the class you want to extend.
+
+public class MyClass extends MyBaseClass { // Code that does something }
+
+You can also add fields and methods to an existing class by creating a new class and making it extend the existing class.
+
+public class MyNewClass extends MyBaseClass { // Code that does something }
+
+You can also create your own class and make it implement an interface. This will allow you to create your own class that can be used in place of any class that implements
