@@ -1,4 +1,4 @@
-id1-Insert images in mongoDB in language Java
+id1- How to insert images in mongoDB in language Java?
 package mongodb.testing.java;
 import com.mongodb.*;
 import com.mongodb.gridfs.*;
